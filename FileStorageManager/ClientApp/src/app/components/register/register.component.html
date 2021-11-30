@@ -1,0 +1,36 @@
+<div class="full-page">
+    <div class="form-container">
+        <h3 class="form-title">Register</h3>
+        <form *ngIf="!success" (ngSubmit)="onSubmit()">
+            <div class="form-input-container">
+                <div class="input-container">
+                    <div class="form-input-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-input" id="firstName" name="firstName" placeholder="Enter First Name" [(ngModel)]="userRegistration.firstName" required autofocus/>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-input" id="lastName" name="lastName" placeholder="Enter Last Name" [(ngModel)]="userRegistration.lastName" required />
+                    </div>
+                    <div class="form-input-group">
+                        <label>Email</label>
+                        <input type="email" class="form-input" id="email" name="email" placeholder="Enter Email" [(ngModel)]="userRegistration.email" required />
+                    </div>
+                    <div class="form-input-group">
+                        <label>Password</label>
+                        <input type="password" class="form-input" id="password" name="password" placeholder="Enter Password" [(ngModel)]="userRegistration.password" />
+                    </div>
+                    <div class="form-input-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
+                    </div>
+                </div>
+                <button class="register-button" type="submit">Submit</button>
+            </div>
+        </form>
+        <div *ngIf="success">
+            <h2>Your account has been created!</h2>
+            <a routerlink="/login">Please login</a>
+        </div>
+    </div>
+</div>

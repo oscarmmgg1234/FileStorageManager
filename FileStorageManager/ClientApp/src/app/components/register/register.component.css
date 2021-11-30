@@ -1,0 +1,20 @@
+form {
+  height: 78%;
+}
+
+.form-title {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.register-button {
+  font-weight: bold;
+  color: white;
+  background-color: #FDC04B;
+  align-self: center;
+  width: 160px;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  justify-self: center
+}
