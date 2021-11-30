@@ -1,10 +1,18 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using FileStorageManager.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetChatApp.Areas.Identity.Data;
+using IdentityServer4.Services;
+using Microsoft.EntityFrameworkCore;
+using AuthServer;
+using System.Reflection;
 
 namespace FileStorageManager
 {
@@ -26,11 +34,30 @@ namespace FileStorageManager
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            string connectionString = Configuration.GetConnectionString("Default");
+            string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+            services.AddDbContext<StorageDbContext>(options => options.UseMySQL(connectionString));
+            services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<StorageDbContext>().AddDefaultTokenProviders();
+            //services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<MyDbContext>();
+
+            services.AddIdentityServer().AddDeveloperSigningCredential().AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = builder => builder.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                // this enables automatic token cleanup. this is optional.
+                options.EnableTokenCleanup = true;
+                options.TokenCleanupInterval = 30; // interval in seconds
+            })
+            .AddInMemoryIdentityResources(Config.GetIdentityResources())
+            .AddInMemoryApiScopes(Config.GetApiScopes())
+            .AddInMemoryClients(Config.GetClients())
+            .AddAspNetIdentity<AppUser>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -50,6 +77,10 @@ namespace FileStorageManager
             }
 
             app.UseRouting();
+
+            app.UseIdentityServer();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
