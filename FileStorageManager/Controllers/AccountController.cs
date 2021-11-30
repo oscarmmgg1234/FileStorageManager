@@ -24,7 +24,7 @@ namespace FileStorageManager.Controllers
         [Route("api/[controller]")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestViewModel model)
         {
-            var user = new AppUser { FirstName = model.FirstName, LastName = model.LastName, FullName = model.FirstName + model.LastName, Email = model.Email};
+            var user = new AppUser { FirstName = model.FirstName, LastName = model.LastName, FullName = model.FirstName + model.LastName, Email = model.Email, UserName = model.FirstName + model.LastName};
             await _userManager.CreateAsync(user, model.Password);
             Console.WriteLine("register user:" + user.FirstName + user.LastName + "," + user.FullName);
             return Ok(new RegisterResponseModel(user));

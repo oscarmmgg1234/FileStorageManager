@@ -38,20 +38,41 @@ namespace FileStorageManager
             string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<StorageDbContext>(options => options.UseMySQL(connectionString));
+            services.AddAuthentication();
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<StorageDbContext>().AddDefaultTokenProviders();
-            //services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<MyDbContext>();
 
             services.AddIdentityServer().AddDeveloperSigningCredential().AddOperationalStore(options =>
             {
                 options.ConfigureDbContext = builder => builder.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                 // this enables automatic token cleanup. this is optional.
                 options.EnableTokenCleanup = true;
-                options.TokenCleanupInterval = 30; // interval in seconds
+                options.TokenCleanupInterval = 120; // interval in seconds
             })
             .AddInMemoryIdentityResources(Config.GetIdentityResources())
             .AddInMemoryApiScopes(Config.GetApiScopes())
             .AddInMemoryClients(Config.GetClients())
             .AddAspNetIdentity<AppUser>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 3;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters =
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                options.User.RequireUniqueEmail = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

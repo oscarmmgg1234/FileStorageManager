@@ -7,7 +7,7 @@ import { RegisterUser } from '../../Shared/Models/register-user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  userRegistration: RegisterUser = { firstName: '', lastName: '', email: '', password: '' }
+  userRegistration: RegisterUser = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
   success: boolean;
 
   constructor(private accountService: AccountService) { }

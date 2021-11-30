@@ -1,5 +1,16 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{FA944A2F-D6E6-4D73-9AAA-A9FCC0984FD6}|Default">
   <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="27" Column="204" />
+      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.html" Line="25" Column="189" />
+      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.ts" Line="10" Column="112" />
+      <File FileName="FileStorageManager/ClientApp/src/app/services/account.service.ts" Line="1" Column="1" />
+      <File FileName="FileStorageManager/Models/AppUser.cs" Line="1" Column="1" />
+      <File FileName="FileStorageManager/Startup.cs" Line="63" Column="53" />
+      <File FileName="FileStorageManager/Models/RegisterRequestViewModel.cs" Line="36" Column="18" />
+      <File FileName="FileStorageManager/ClientApp/src/app/Shared/Models/register-user.ts" Line="7" Column="36" />
+      <File FileName="FileStorageManager/ClientApp/src/index.html" Line="6" Column="18" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -11,8 +22,9 @@
                 </Node>
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="RegisterResponseModel.cs" selected="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True">
+                <Node name="launchSettings.json" selected="True" />
               </Node>
             </Node>
           </Node>
