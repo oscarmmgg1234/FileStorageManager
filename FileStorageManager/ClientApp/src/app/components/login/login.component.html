@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="full-page">
+  <div class="form-container">
+    <h3 class="form-title">Login</h3>
+    <form *ngIf="!success" (ngSubmit)="onSubmit()">
+      <div class="form-input-container">
+        <div class="input-container">
+          
+          <div class="form-input-group">
+            <label>Email</label>
+            <input type="email" class="form-input" id="email" name="email" placeholder="Enter Email" [(ngModel)]="loginUser.email" required />
+          </div>
+          <div class="form-input-group">
+            <label>Password</label>
+            <input type="password" class="form-input" id="password" name="password" placeholder="Enter Password" [(ngModel)]="loginUser.password" />
+          </div>
+        
+        </div>
+        <button class="register-button" type="submit">Submit</button>
+      </div>
+    </form>
+    <div *ngIf="success">
+      <h2>Your account has been created!</h2>
+      <a routerlink="/home">Enter Storage room</a>
+    </div>
+  </div>
+</div>

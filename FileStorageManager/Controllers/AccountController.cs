@@ -29,6 +29,24 @@ namespace FileStorageManager.Controllers
             Console.WriteLine("register user:" + user.FirstName + user.LastName + "," + user.FullName);
             return Ok(new RegisterResponseModel(user));
         }
+        [HttpGet]
+        [Route("api/[controller]")]
+        public async Task<IActionResult> Login([FromBody] LoginUserRequestModel model)
+        {
+
+            var returnUrl = Url.Content("~/");
+            
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            var results = await _userManager.CheckPasswordAsync(user, model.Password);
+            if (!results)
+            {
+                return Redirect(returnUrl);
+            }
+            await _signInManager.SignInAsync(user, isPersistent: true);
+            return Redirect(returnUrl);
+
+        }
+
 
         //[HttpGet]
         //[Route(("api/[controller]"))]
