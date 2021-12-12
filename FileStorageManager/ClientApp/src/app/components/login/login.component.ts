@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginUser } from '../../Shared/Models/login-user.model';
+import { LoginUser } from '../../Shared/Models/login-user';
 import { AccountService } from '../../services/account.service';
 
 @Component({
@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
           this.success = true;
         }
       });
+
+    //this.accountService.signIn(this.loginUser);
   }
 
 }

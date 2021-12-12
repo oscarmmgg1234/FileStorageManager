@@ -18,11 +18,6 @@ namespace FileStorageManager.Models
         public string LastName { get; set; }
 
         [Required]
-        [DataType(DataType.Text)]
-        [Display(Name="FullName")]
-        public string FullName { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name="Email")]
         public string Email { get; set; }

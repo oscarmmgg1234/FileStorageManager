@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FileStorageManager.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NetChatApp.Areas.Identity.Data;
 
 namespace FileStorageManager.Controllers
 {
+    [ApiController]
+    [Route("api/Account/[action]")]
     public class AccountController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -21,35 +24,42 @@ namespace FileStorageManager.Controllers
         }
 
         [HttpPost]
-        [Route("api/[controller]")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestViewModel model)
         {
-            var user = new AppUser { FirstName = model.FirstName, LastName = model.LastName, FullName = model.FirstName + model.LastName, Email = model.Email, UserName = model.FirstName + model.LastName};
-            await _userManager.CreateAsync(user, model.Password);
-            Console.WriteLine("register user:" + user.FirstName + user.LastName + "," + user.FullName);
+            Console.WriteLine("register");
+            // if model has errors such as password to short or email is in wrong format
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var user = new AppUser { FirstName = model.FirstName, LastName = model.LastName, FullName = model.FirstName + model.LastName, Email = model.Email, UserName = model.FirstName + model.LastName };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded) return BadRequest(result.Errors);
             return Ok(new RegisterResponseModel(user));
         }
-        [HttpGet]
-        [Route("api/[controller]")]
+
+        [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginUserRequestModel model)
         {
+            var results = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: false, lockoutOnFailure: false);
 
-            var returnUrl = Url.Content("~/");
-            
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            var results = await _userManager.CheckPasswordAsync(user, model.Password);
-            if (!results)
+            if(results.Succeeded)
             {
-                return Redirect(returnUrl);
+                Console.WriteLine("user:" + model.Email + "logged in");
+                return Redirect("https://localhost:5001");
             }
-            await _signInManager.SignInAsync(user, isPersistent: true);
-            return Redirect(returnUrl);
+            //var user = await _userManager.FindByEmailAsync(model.Email);
+            //var results = await _userManager.CheckPasswordAsync(user, model.Password);
+            //if (!results)
+            //{
+            //    return Redirect("~/");
+            //}
+            //await _signInManager.SignInAsync(user, isPersistent: true);
+            //return Ok();
+            return Redirect("https://localhost:5001");
 
         }
 
-
-        //[HttpGet]
-        //[Route(("api/[controller]"))]
 
     }
 }

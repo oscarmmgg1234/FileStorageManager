@@ -1,15 +1,15 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{FA944A2F-D6E6-4D73-9AAA-A9FCC0984FD6}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="27" Column="204" />
-      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.html" Line="25" Column="189" />
-      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.ts" Line="10" Column="112" />
+      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="41" Column="18" />
+      <File FileName="FileStorageManager/Pages/Login/Index.cshtml" Line="11" Column="45" />
+      <File FileName="FileStorageManager/Models/Account/LoginInputModel.cs" Line="15" Column="25" />
+      <File FileName="FileStorageManager/Models/Account/LoginViewModel.cs" Line="4" Column="44" />
+      <File FileName="FileStorageManager/Startup.cs" Line="107" Column="14" />
+      <File FileName="FileStorageManager/Controllers/HomeController.cs" Line="18" Column="6" />
+      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.html" Line="3" Column="45" />
       <File FileName="FileStorageManager/ClientApp/src/app/services/account.service.ts" Line="1" Column="1" />
-      <File FileName="FileStorageManager/Models/AppUser.cs" Line="1" Column="1" />
-      <File FileName="FileStorageManager/Startup.cs" Line="63" Column="53" />
-      <File FileName="FileStorageManager/Models/RegisterRequestViewModel.cs" Line="36" Column="18" />
-      <File FileName="FileStorageManager/ClientApp/src/app/Shared/Models/register-user.ts" Line="7" Column="36" />
-      <File FileName="FileStorageManager/ClientApp/src/index.html" Line="6" Column="18" />
+      <File FileName="FileStorageManager/Views/_ViewImports.cshtml" Line="2" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,14 +17,24 @@
           <Node name="FileStorageManager" expanded="True">
             <Node name="FileStorageManager" expanded="True">
               <Node name="ClientApp" expanded="True">
+                <Node name="e2e" expanded="True">
+                  <Node name="src" expanded="True" />
+                </Node>
                 <Node name="src" expanded="True">
-                  <Node name="app" expanded="True" />
+                  <Node name="app" expanded="True">
+                    <Node name="components" expanded="True" />
+                    <Node name="services" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True">
-                <Node name="launchSettings.json" selected="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Account" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Shared" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>

@@ -9,6 +9,7 @@ import { RegisterUser } from '../../Shared/Models/register-user';
 export class RegisterComponent implements OnInit {
   userRegistration: RegisterUser = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
   success: boolean;
+  error: string
 
   constructor(private accountService: AccountService) { }
 
@@ -21,7 +22,11 @@ export class RegisterComponent implements OnInit {
         if (result) {
           this.success = true;
         }
-      });
+      },
+      error => {
+        this.error = error;
+      }
+    );
   }
 
 }
