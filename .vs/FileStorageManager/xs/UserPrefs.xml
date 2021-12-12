@@ -1,14 +1,13 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{FA944A2F-D6E6-4D73-9AAA-A9FCC0984FD6}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="41" Column="18" />
-      <File FileName="FileStorageManager/Models/Account/LoginInputModel.cs" />
-      <File FileName="FileStorageManager/Models/Account/LoginViewModel.cs" />
-      <File FileName="FileStorageManager/Startup.cs" />
-      <File FileName="FileStorageManager/Controllers/HomeController.cs" />
-      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.html" />
-      <File FileName="FileStorageManager/ClientApp/src/app/services/account.service.ts" />
+      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="39" Column="10" />
+      <File FileName="FileStorageManager/Startup.cs" Line="108" Column="1" />
+      <File FileName="FileStorageManager/ClientApp/src/app/services/account.service.ts" Line="1" Column="1" />
       <File FileName="FileStorageManager/Views/_ViewImports.cshtml" />
+      <File FileName="FileStorageManager/Models/Account/LoginViewModel.cs" Line="1" Column="1" />
+      <File FileName="FileStorageManager/Models/Account/LoginInputModel.cs" Line="12" Column="45" />
+      <File FileName="FileStorageManager/Views/Shared/Index.cshtml" Line="28" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,24 +15,24 @@
           <Node name="FileStorageManager" expanded="True">
             <Node name="FileStorageManager" expanded="True">
               <Node name="ClientApp" expanded="True">
-                <Node name="e2e" expanded="True">
-                  <Node name="src" expanded="True" />
-                </Node>
+                <Node name="e2e" expanded="True" />
                 <Node name="src" expanded="True">
                   <Node name="app" expanded="True">
-                    <Node name="components" expanded="True" />
+                    <Node name="components" expanded="True">
+                      <Node name="login" expanded="True" />
+                    </Node>
                     <Node name="services" expanded="True" />
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="AccountController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="Account" expanded="True" />
               </Node>
               <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
