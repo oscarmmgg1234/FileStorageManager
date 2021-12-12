@@ -2,14 +2,13 @@
   <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="41" Column="18" />
-      <File FileName="FileStorageManager/Pages/Login/Index.cshtml" Line="11" Column="45" />
-      <File FileName="FileStorageManager/Models/Account/LoginInputModel.cs" Line="15" Column="25" />
-      <File FileName="FileStorageManager/Models/Account/LoginViewModel.cs" Line="4" Column="44" />
-      <File FileName="FileStorageManager/Startup.cs" Line="107" Column="14" />
-      <File FileName="FileStorageManager/Controllers/HomeController.cs" Line="18" Column="6" />
-      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.html" Line="3" Column="45" />
-      <File FileName="FileStorageManager/ClientApp/src/app/services/account.service.ts" Line="1" Column="1" />
-      <File FileName="FileStorageManager/Views/_ViewImports.cshtml" Line="2" Column="26" />
+      <File FileName="FileStorageManager/Models/Account/LoginInputModel.cs" />
+      <File FileName="FileStorageManager/Models/Account/LoginViewModel.cs" />
+      <File FileName="FileStorageManager/Startup.cs" />
+      <File FileName="FileStorageManager/Controllers/HomeController.cs" />
+      <File FileName="FileStorageManager/ClientApp/src/app/components/register/register.component.html" />
+      <File FileName="FileStorageManager/ClientApp/src/app/services/account.service.ts" />
+      <File FileName="FileStorageManager/Views/_ViewImports.cshtml" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,14 +26,14 @@
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AccountController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True">
                 <Node name="Account" expanded="True" />
               </Node>
               <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
