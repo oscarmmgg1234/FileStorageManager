@@ -1,12 +1,11 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{FA944A2F-D6E6-4D73-9AAA-A9FCC0984FD6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FileStorageManager/Views/Shared/Index.cshtml">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="24" Column="10" />
+      <File FileName="FileStorageManager/Controllers/AccountController.cs" Line="39" Column="10" />
       <File FileName="FileStorageManager/Views/Shared/Index.cshtml" Line="14" Column="7" />
       <File FileName="FileStorageManager/Models/Account/LoginInputModel.cs" Line="10" Column="1" />
       <File FileName="FileStorageManager/Models/Account/LoginViewModel.cs" Line="1" Column="1" />
-      <File FileName="FileStorageManager/ClientApp/src/app/components/login/login.component.html" Line="10" Column="50" />
-      <File FileName="FileStorageManager/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="FileStorageManager/ClientApp/src/app/components/login/login.component.html" Line="26" Column="6" />
       <File FileName="FileStorageManager/Startup.cs" Line="1" Column="1" />
       <File FileName="FileStorageManager/Models/AppUser.cs" Line="1" Column="1" />
     </Files>
@@ -26,15 +25,15 @@
                   </Node>
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AccountController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True">
                 <Node name="Account" expanded="True" />
               </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Shared" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
