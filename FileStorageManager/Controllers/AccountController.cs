@@ -39,24 +39,18 @@ namespace FileStorageManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody] LoginUserRequestModel model)
+        public async Task<IActionResult> Login([FromForm] LoginUserRequestModel model)
         {
-            var results = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: false, lockoutOnFailure: false);
-
+            Console.WriteLine("email:" + model.Email + "password:" + model.Password);
+            var results = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+            var returnUrl = "https://localhost:5001/";
             if(results.Succeeded)
             {
                 Console.WriteLine("user:" + model.Email + "logged in");
-                return Redirect("https://localhost:5001");
+                return Redirect(returnUrl);
             }
-            //var user = await _userManager.FindByEmailAsync(model.Email);
-            //var results = await _userManager.CheckPasswordAsync(user, model.Password);
-            //if (!results)
-            //{
-            //    return Redirect("~/");
-            //}
-            //await _signInManager.SignInAsync(user, isPersistent: true);
-            //return Ok();
-            return Redirect("https://localhost:5001");
+
+            return Redirect(returnUrl);
 
         }
 
