@@ -36,14 +36,15 @@ namespace FileStorageManager
             });
             string connectionString = Configuration.GetConnectionString("Default");
             string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            var serverVersion = ServerVersion.AutoDetect(connectionString);
 
-            services.AddDbContext<StorageDbContext>(options => options.UseMySQL(connectionString));
+            services.AddDbContext<StorageDbContext>(options => options.UseMySql(connectionString, serverVersion));
             services.AddAuthentication();
             services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<StorageDbContext>().AddDefaultTokenProviders();
 
             services.AddIdentityServer().AddDeveloperSigningCredential().AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = builder => builder.UseMySQL(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                options.ConfigureDbContext = builder => builder.UseMySql(connectionString, serverVersion, sql => sql.MigrationsAssembly(migrationsAssembly));
                 // this enables automatic token cleanup. this is optional.
                 options.EnableTokenCleanup = true;
                 options.TokenCleanupInterval = 120; // interval in seconds

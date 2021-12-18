@@ -26,8 +26,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,7 +44,6 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="MySql.EntityFrameworkCore" />
     <None Remove="ClientApp\src\app\Shared\" />
-    <None Remove="Migrations\" />
     <None Remove="Controllers\" />
     <None Remove="Models\Account\" />
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
@@ -54,7 +53,6 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="ClientApp\src\app\Shared\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\Account\" />
     <Folder Include="Pages\Shared\" />

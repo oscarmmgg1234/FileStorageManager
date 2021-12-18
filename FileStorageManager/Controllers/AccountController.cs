@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FileStorageManager.Models;
+using FileStorageManager.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace FileStorageManager.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] RegisterRequestViewModel model)
         {
-            Console.WriteLine("register");
+            Console.WriteLine("register" + model.FirstName);
             // if model has errors such as password to short or email is in wrong format
             if (!ModelState.IsValid)
             {
@@ -39,18 +40,24 @@ namespace FileStorageManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromForm] LoginUserRequestModel model)
+        public async Task<IActionResult> Login([FromForm] LoginInputModel model)
         {
             Console.WriteLine("email:" + model.Email + "password:" + model.Password);
-            var results = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+            var results = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberLogin, lockoutOnFailure: false);
+            Console.WriteLine("result:" + results);
             var returnUrl = "https://localhost:5001/";
-            if(results.Succeeded)
+            var registerUrl = "https://localhost:5001/register";
+            if (ModelState.IsValid)
             {
-                Console.WriteLine("user:" + model.Email + "logged in");
-                return Redirect(returnUrl);
+                Console.WriteLine("model is correct");
+                if (results.Succeeded)
+                {
+                    Console.WriteLine("user:" + model.Email + "logged in");
+                    return Redirect(returnUrl);
+                }
             }
 
-            return Redirect(returnUrl);
+            return Redirect(registerUrl);
 
         }
 
