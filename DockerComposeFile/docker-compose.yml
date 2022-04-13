@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  database:
+    restart: always
+    container_name: fsdb
+    network_mode: host
+    image: mysql
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+  app:
+    image: file-storage-app
+    container_name: file-storage-app
+    network_mode: host
+    depends_on:
+      - database
+    ports: 
+      - "8080:80"
+    expose:
+      - "8080"
+    restart: always
+  
+  
